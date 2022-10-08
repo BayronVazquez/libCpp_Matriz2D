@@ -66,7 +66,7 @@ template <class T>
 bool Matriz2D<T>::isValidIndex(size_t COL, size_t ROW)
 {
     // Validamos los limites del array en x (columnas)
-    if( COL < 0 || COL > this->COLS)
+    if( COL >= this->COLS)
     {
         if(this->DEBUGGIN_MODE)
             cout << "[FAIL] Intentaste acceder a una posicion mas alla de (X) en la matriz actual."
@@ -75,13 +75,15 @@ bool Matriz2D<T>::isValidIndex(size_t COL, size_t ROW)
     }
 
     // Validamos los limites del array en y (filas)
-    if( ROW < 0 && ROW >= this->ROWS)
+    if( ROW >= this->ROWS)
     {
         if(this->DEBUGGIN_MODE)
             cout << "[FAIL] Intentaste acceder a una posicion mas alla de (Y) en la matriz actual."
                  << "Recuerda que Empieza en 0 y termina en " << (this->ROWS-1) << endl;
         return false;
     }
+
+    return true;
 }
 
 /**
